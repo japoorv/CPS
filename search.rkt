@@ -51,7 +51,7 @@ The idea and terms used are all from "Building Problem Solver" book.
     (queue->list return_lst)))
 
 (define (loop? path_ state_)
-  (ormap (lambda (x) ((problem-state-identical? (path-pr path_)) x state_)) (path-so-far path_))
+  (ormap (lambda (x) ((problem-state-identical? (path-pr path_)) x state_)) (cons (path-current-state path_) (path-so-far path_)))
   )
 (define (enqueue_list Qu lst)
   (map (lambda (x) (enqueue! Qu x)) lst))
